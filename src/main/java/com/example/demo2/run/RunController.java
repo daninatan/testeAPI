@@ -1,32 +1,28 @@
-package com.example.demo2.run;
+    package com.example.demo2.run;
 
-import org.springframework.web.bind.annotation.*;
+    import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+    import java.util.List;
 
-@CrossOrigin(origins = "*") // Permite requisições de qualquer origem
-@RestController
-@RequestMapping("/api/runs")
-public class RunController {
+    @CrossOrigin(origins = "*") // Permite requisições de qualquer origem
+    @RestController
+    @RequestMapping("/api/runs")
+    public class RunController {
 
-    private final RunRepository runRepository;
+        private final RunRepository runRepository;
 
-    public RunController(RunRepository runRepository) {
-        this.runRepository = runRepository;
-        //sla
+        public RunController(RunRepository runRepository) {
+            this.runRepository = runRepository;
+            //sla
+        }
+
+        @GetMapping("")
+        List<Run> runs(){
+            return runRepository.getRuns();
+        }
+
+        @GetMapping("/getById")
+        Run findById(@RequestParam Integer id){
+            return runRepository.findById(id);
+        }
     }
-
-    @GetMapping("")
-    List<Run> runs(){
-        return runRepository.getRuns();
-    }
-
-    @GetMapping("/getById")
-    Run findById(@RequestParam Integer id){
-        return runRepository.findById(id);
-    }
-    @GetMapping("/isa")
-    String isa(){
-        return "oi isa, te amo";
-    }
-}
