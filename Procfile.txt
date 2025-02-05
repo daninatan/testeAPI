@@ -1,1 +1,1 @@
-web: java -jar out/artifacts/demo2_jar/demo2.jar
+web: ls -l target/ && java -jar target/demo2-1.0.0.jar
