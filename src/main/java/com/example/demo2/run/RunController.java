@@ -25,4 +25,8 @@ public class RunController {
     Run findById(@RequestParam Integer id){
         return runRepository.findById(id);
     }
+    @GetMapping("/isa")
+    String isa(){
+        return "oi isa, te amo";
+    }
 }
